@@ -3,16 +3,38 @@ import './Game.css'
 import StartGame from './services/StartGame'
 
 export const Game = () => {
+
    const [data] = useState(StartGame)
    const wordLetters = data.word.split("")
-   const [wordUsed, setWordUsed] = useState([])
+
+   const [letterUsed, setletterUsed] = useState([])
    const [valueInput, setValueInput] = useState('')
 
-   const handleWordUsed = ()=>{
-    if (valueInput && !wordUsed.includes(valueInput)){ 
-        setWordUsed([...wordUsed, valueInput])
+   const [correctLetter, setCorrectLetter] = useState([])
+
+   const handleLetters = ()=>{
+   //caso exista, verifica se o valor de input já foi usado
+    if (valueInput && !letterUsed.includes(valueInput)){ 
+
+        // caso não tenha sido usado adiciona no array de letras usadas
+        setletterUsed([...letterUsed, valueInput])
+        
+        //verifica se essa letra está inclusa na palavra sorteada
+        if( wordLetters.includes(valueInput)){
+            //caso inclua, coloca no array de letras corretas pra ferificar
+            // se a opacity vai ser 0 ou 1
+
+            setCorrectLetter([...correctLetter, valueInput])
+            console.log(correctLetter)
+        }
+
     }
+   
+
+   
     setValueInput('')
+
+
    }
 
   return (
@@ -23,7 +45,9 @@ export const Game = () => {
         <div className="wordLetters">
             {wordLetters.map((e, i) => 
                 <div key={i} className="word">
-                    <p  >{e.toUpperCase()}</p>        
+                    <p className={correctLetter.includes(e)? '': 'opacity0'} >
+                        {e.toUpperCase()}
+                    </p>        
                 </div>
             )}
         </div>
@@ -32,12 +56,12 @@ export const Game = () => {
         maxLength={1} 
         value={valueInput}
         onChange={e => setValueInput(e.target.value)} />
-        <button onClick={handleWordUsed}>Jogar</button>
+        <button onClick={handleLetters}>Jogar</button>
 
         <span>Letras já adicionadas: </span>
         <p>
             {
-                wordUsed.join(',')
+                letterUsed.join(',')
             }
         </p>
         
