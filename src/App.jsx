@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import './App.css'
 import { StartScreen } from './components/StartScreen'
+import { Game } from './components/Game'
 
 
 const stages = [
@@ -11,14 +12,14 @@ const stages = [
 
 function App() {
 
-  const [currentStage, setCurrentStage] = useState(stages[0].name)
+  const [currentStage, setCurrentStage] = useState(stages[1].name)
 
   return (
     <div className='App'> 
 
       <h1>Secret Word</h1>
       {currentStage === 'start' && <StartScreen />}
-
+      {currentStage === 'game' && <Game />}
     </div> 
   )
 }
