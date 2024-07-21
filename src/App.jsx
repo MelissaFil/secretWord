@@ -12,13 +12,18 @@ const stages = [
 
 function App() {
 
-  const [currentStage, setCurrentStage] = useState(stages[1].name)
+  const [currentStage, setCurrentStage] = useState(stages[0].name)
+
+  const startGame = ()=>{
+    
+    setCurrentStage(stages[1].name)
+  }
 
   return (
     <div className='App'> 
 
       <h1>Secret Word</h1>
-      {currentStage === 'start' && <StartScreen />}
+      {currentStage === 'start' && <StartScreen startGame={startGame}/>}
       {currentStage === 'game' && <Game />}
     </div> 
   )

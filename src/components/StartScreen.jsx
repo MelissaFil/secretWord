@@ -1,9 +1,9 @@
 import './StartScreen.css'
-export const StartScreen = () => {
+export const StartScreen = ({startGame}) => {
   return (
     <div className="startScreen">
         <p> Para começar, clique no botão abaixo</p>
-        <button>Começar jogo</button>
+        <button onClick={startGame}>Começar jogo</button>
     </div>
   )
 }
