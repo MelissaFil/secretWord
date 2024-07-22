@@ -81,13 +81,17 @@ export const Game = ({gameOver}) => {
                 </div>
             )}
         </div>
-   
-        <input type='text' 
-        maxLength={1} 
-        value={valueInput}
-        onChange={e => setValueInput(e.target.value)} />
 
-        <button onClick={handleLetters}>Jogar</button>
+        <div className='mb1' >
+            <input type='text' 
+            maxLength={1}
+             
+            value={valueInput}
+            onChange={e => setValueInput(e.target.value)} />
+
+            <button onClick={handleLetters}>Jogar</button>
+        </div>
+    
 
         <span>Letras já adicionadas: </span>
         <p>

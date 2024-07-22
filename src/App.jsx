@@ -31,13 +31,13 @@ function App() {
     <div className='App'> 
 
       <h1>Secret Word</h1>
+
       {currentStage === 'start' && <StartScreen startGame={startGame}/>}
 
-      {currentStage === 'game' && 
-      <Game gameOver={gameOver} 
-      />}
+      {currentStage === 'game' && <Game gameOver={gameOver} />}
 
       {currentStage === 'end' && <EndScreen resetGame={resetGame} />}
+
     </div> 
   )
 }
